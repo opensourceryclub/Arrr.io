@@ -13,7 +13,7 @@ class Player extends ObjectClass {
 
   // Returns a newly created bullet, or null.
   update(dt) {
-    super.update(dt);
+    super.update(dt); // updates direction and position
 
     // Update score
     this.score += dt * Constants.SCORE_PER_SECOND;
@@ -30,6 +30,25 @@ class Player extends ObjectClass {
     }
 
     return null;
+  }
+
+  /**
+   * Calculate the player's new steer angle. This will depend on which keys the
+   * player pressed, the steering speed of their ship, and whatever else idk.
+   * 
+   * @memberof Player
+   */
+  steer(keysPressed) {
+    let tempDir = this.direction
+    const TURN_L_KEY = 0
+    const TURN_R_KEY = 1
+    // update the player's direction based on their current direction and kep presses
+    const STEERING_SPEED = 0.05
+    const keyPresses = [ (keysPressed.a ? 1 : 0) , (keysPressed.d ? 1 : 0) ]
+    tempDir -= keyPresses[ TURN_L_KEY ] * STEERING_SPEED // turns left
+    tempDir += keyPresses[ TURN_R_KEY ] * STEERING_SPEED // turns right 
+    
+    this.setDirection(tempDir);
   }
 
   takeBulletDamage() {

@@ -1,12 +1,14 @@
 const Constants = require('../shared/constants');
 const Player = require('./player');
 const applyCollisions = require('./collisions');
+const Scene = require('./game/Scene');
 
 class Game {
   constructor() {
     this.sockets = {};
     this.players = {};
     this.bullets = [];
+    this.scene = new Scene();
     this.lastUpdateTime = Date.now();
     this.shouldSendUpdate = false;
     setInterval(this.update.bind(this), 1000 / 60); //
@@ -26,9 +28,9 @@ class Game {
     delete this.players[socket.id];
   }
 
-  handleInput(socket, dir) {
+  handleInput(socket, keysPressed) {
     if (this.players[socket.id]) {
-      this.players[socket.id].setDirection(dir);
+      this.players[socket.id].steer(keysPressed);
     }
   }
 
