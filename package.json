@@ -5,9 +5,11 @@
   "main": "src/server/server.js",
   "scripts": {
     "build": "webpack --config webpack.prod.js",
+    "build:dev": "webpack-dev-server --mode development --config webpack.prod.js",
     "lint": "eslint --cache --ext .js,.jsx src/",
     "develop": "cross-env NODE_ENV=development node src/server/server.js",
     "start": "cross-env NODE_ENV=production node src/server/server.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon src/server/server.js",
     "test": "jest"
   },
   "author": "Victor Zhou",
@@ -15,29 +17,34 @@
   "dependencies": {
     "express": "^4.17.1",
     "html-webpack-plugin": "^3.2.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.20",
+    "nodemon": "^2.0.4",
     "shortid": "^2.2.15",
     "socket.io": "^2.3.0",
     "socket.io-client": "^2.3.0",
-    "throttle-debounce": "^2.1.0",
-    "webpack": "^4.43.0",
+    "throttle-debounce": "^2.3.0",
+    "webpack": "^4.44.1",
     "webpack-dev-middleware": "^3.7.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@babel/preset-env": "^7.10.2",
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "cross-env": "^5.2.1",
     "css-loader": "^2.1.1",
-    "eslint": "^5.16.0",
+    "eslint": "^7.7.0",
     "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-jest": "^23.7.0",
-    "jest": "^25.1.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.20.0",
+    "jest": "^26.4.2",
     "mini-css-extract-plugin": "^0.6.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
-    "webpack-cli": "^3.3.11",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^4.2.2"
+  },
+  "resolutions": {
+    "dot-prop": ">=5.2.0"
   }
 }
