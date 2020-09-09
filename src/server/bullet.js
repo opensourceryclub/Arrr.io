@@ -8,6 +8,10 @@ class Bullet extends ObjectClass {
     const hitbox = new Shape([[0, 0], [3, 0], [3, 3], [0, 3]], x, y);
     super(shortid(), x, y, dir, Constants.BULLET_SPEED, hitbox);
     this.parentID = parentID;
+
+    // need to get the length and width from the ship, but for now we do this shit
+    // this.box = new Shape([[0, 20], [0, 0], [20, 0], [20, 20]], x, y);
+    this.box = new Shape([[0, 0], [0, 20], [20, 20], [20, 0]], x, y);
   }
 
   // Returns true if the bullet should be destroyed

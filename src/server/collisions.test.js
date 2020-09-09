@@ -39,4 +39,16 @@ describe('applyCollisions', () => {
     expect(result).toContain(bullet);
     expect(player.takeBulletDamage).toHaveBeenCalledTimes(1);
   });
+
+  // it('should collide with SAT', () => {
+  //   const player = new Player('1', 'guest', 40, 40);
+  //   const bullet = new Bullet('2', 40, 40 + Constants.BULLET_RADIUS + Constants.PLAYER_RADIUS, 0);
+
+  //   jest.spyOn(player, 'takeBulletDamage');
+
+  //   const result = applyCollisions([player], [bullet]);
+  //   expect(result).toHaveLength(1);
+  //   expect(result).toContain(bullet);
+  //   expect(player.takeBulletDamage).toHaveBeenCalledTimes(1);
+  // })
 });

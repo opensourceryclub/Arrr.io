@@ -53,12 +53,12 @@ function renderBackground(x, y) {
   const backgroundX = MAP_SIZE / 2 - x + canvas.width / 2;
   const backgroundY = MAP_SIZE / 2 - y + canvas.height / 2;
   const backgroundGradient = context.createRadialGradient(
-    backgroundX,
-    backgroundY,
-    MAP_SIZE / 10,
-    backgroundX,
-    backgroundY,
-    MAP_SIZE / 2,
+      backgroundX,
+      backgroundY,
+      MAP_SIZE / 10,
+      backgroundX,
+      backgroundY,
+      MAP_SIZE / 2,
   );
   backgroundGradient.addColorStop(0, 'black');
   backgroundGradient.addColorStop(1, 'gray');
@@ -69,8 +69,8 @@ function renderBackground(x, y) {
 // Renders a ship at the given coordinates
 function renderPlayer(me, player) {
   const { x, y, direction } = player;
-  const canvasX = canvas.width / 2 + x - me.x;
-  const canvasY = canvas.height / 2 + y - me.y;
+  let canvasX = canvas.width / 2 + x - me.x;
+  let canvasY = canvas.height / 2 + y - me.y;
 
   // Draw ship
   context.save();
@@ -88,28 +88,28 @@ function renderPlayer(me, player) {
   // Draw health bar
   context.fillStyle = 'white';
   context.fillRect(
-    canvasX - PLAYER_RADIUS,
-    canvasY + 55,
-    PLAYER_RADIUS * 2,
-    2,
+      canvasX - PLAYER_RADIUS,
+      canvasY + 55,
+      PLAYER_RADIUS * 2,
+      2,
   );
   context.fillStyle = 'red';
   context.fillRect(
-    canvasX - PLAYER_RADIUS + PLAYER_RADIUS * 2 * player.hp / PLAYER_MAX_HP,
-    canvasY + PLAYER_RADIUS + 8,
-    PLAYER_RADIUS * 2 * (1 - player.hp / PLAYER_MAX_HP),
-    2,
+      canvasX - PLAYER_RADIUS + PLAYER_RADIUS * 2 * player.hp / PLAYER_MAX_HP,
+      canvasY + PLAYER_RADIUS + 8,
+      PLAYER_RADIUS * 2 * (1 - player.hp / PLAYER_MAX_HP),
+      2,
   );
 }
 
 function renderBullet(me, bullet) {
   const { x, y } = bullet;
   context.drawImage(
-    getAsset('bullet.svg'),
-    canvas.width / 2 + x - me.x - BULLET_RADIUS,
-    canvas.height / 2 + y - me.y - BULLET_RADIUS,
-    BULLET_RADIUS * 5,
-    BULLET_RADIUS * 5,
+      getAsset('bullet.svg'),
+      canvas.width / 2 + x - me.x - BULLET_RADIUS,
+      canvas.height / 2 + y - me.y - BULLET_RADIUS,
+      BULLET_RADIUS * 5,
+      BULLET_RADIUS * 5,
   );
 }
 
