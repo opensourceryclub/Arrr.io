@@ -10,12 +10,13 @@ Built on skeleton io game from <a href="https://example-io-game.victorzhou.com">
 
 Built with [Node.js](https://nodejs.org/), [socket.io](https://socket.io/), and [HTML5 Canvas](https://www.w3schools.com/html/html5_canvas.asp).
 
-To see this code with [Flow](https://flow.org/) typing, visit the [flow branch](https://github.com/vzhou842/example-.io-game/tree/flow).
+Checkout the [live version](http://ec2-3-95-192-146.compute-1.amazonaws.com:3000/).
 
 ## Game Description
 arrr.io is an io-style game where users will control pirate ships. The goal is to attain the highest score. They will do this by controlling pirate ships, collecting gold, and battling other pirate ships.
 
 In the future, we would like players to be upgrade their ships, and be able to travel to islands to run trade routes for more gold.
+
 ## Development
 
 To get started, make sure you have Node and NPM installed. Then,
