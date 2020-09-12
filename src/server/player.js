@@ -14,8 +14,6 @@ class Player extends ObjectClass {
     super(id, x, y, 0, Constants.PLAYER_SPEED, hitbox);
 
     this.username = username;
-
-    // Again, I ask: what do you think this variable is?
     this.hp = Constants.PLAYER_MAX_HP;
     this.score = 0;
 
