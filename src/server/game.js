@@ -1,17 +1,15 @@
 const Constants = require('../shared/constants');
 const Player = require('./player');
 const applyCollisions = require('./collisions');
-const Scene = require('./game/Scene');
 
 class Game {
   constructor() {
     this.sockets = {};
     this.players = {};
     this.bullets = [];
-    this.scene = new Scene();
     this.lastUpdateTime = Date.now();
     this.shouldSendUpdate = false;
-    setInterval(this.update.bind(this), 1000 / 60); //
+    setInterval(this.update.bind(this), 1000 / 60);
   }
 
   addPlayer(socket, username) {
@@ -28,10 +26,22 @@ class Game {
     delete this.players[socket.id];
   }
 
-  handleInput(socket, keysPressed) {
+  handleSteer(socket, steerControls) {
     if (this.players[socket.id]) {
-      this.players[socket.id].steer(keysPressed);
+      this.players[socket.id].steer(steerControls);
     }
+  }
+
+  handleShootCannons(socket, dir) {
+    const newBullets = this.players[socket.id].shootCannons(dir)
+    this.bullets = this.bullets.concat(newBullets);
+  }
+
+  purchaseShip(socket, purchaseRequest) {
+    // check if the player can afford to purchase the ship
+    // check if the player is at the shop? (maybe different shops and prices)
+    // check if they can replace their ship with the purchased ship
+    // transfer cargo
   }
 
   update() {

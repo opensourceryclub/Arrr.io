@@ -1,10 +1,12 @@
 const shortid = require('shortid');
 const ObjectClass = require('./object');
 const Constants = require('../shared/constants');
+const Shape = require('./shape');
 
 class Bullet extends ObjectClass {
   constructor(parentID, x, y, dir) {
-    super(shortid(), x, y, dir, Constants.BULLET_SPEED);
+    const hitbox = new Shape([[0, 0], [3, 0], [3, 3], [0, 3]], x, y);
+    super(shortid(), x, y, dir, Constants.BULLET_SPEED, hitbox);
     this.parentID = parentID;
   }
 

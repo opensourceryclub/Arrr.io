@@ -30,10 +30,22 @@ export const connect = onGameOver => (
   })
 );
 
+/**
+ * Requests for the client to make to the server.
+ * - Join Game
+ * - Post Input
+ * - Shoot Cannons
+ * - Upgrade Ship
+ */
+
 export const play = username => {
   socket.emit(Constants.MSG_TYPES.JOIN_GAME, username);
 };
 
 export const updateDirection = throttle(20, dir => {
   socket.emit(Constants.MSG_TYPES.INPUT, dir);
+});
+
+export const shootCannons = throttle(20, data => {
+  socket.emit(Constants.MSG_TYPES.SHOOT, data);
 });

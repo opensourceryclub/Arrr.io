@@ -28,6 +28,7 @@ describe('Player', () => {
       expect(player.update(Constants.PLAYER_FIRE_COOLDOWN / 3)).toBe(null);
     });
   });
+
   describe('takeBulletDamage', () => {
     it('should take damage when hit', () => {
       const player = new Player('123', 'guest');

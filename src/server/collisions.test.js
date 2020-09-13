@@ -30,7 +30,7 @@ describe('applyCollisions', () => {
 
   it('should apply damage when bullet collides with player', () => {
     const player = new Player('1', 'guest', 40, 40);
-    const bullet = new Bullet('2', 40, 40 + Constants.BULLET_RADIUS + Constants.PLAYER_RADIUS, 0);
+    const bullet = new Bullet('2', 40, 40, 0);
 
     jest.spyOn(player, 'takeBulletDamage');
 

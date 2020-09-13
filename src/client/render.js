@@ -1,12 +1,16 @@
-// Learn more about this file at:
-// https://victorzhou.com/blog/build-an-io-game-part-1/#5-client-rendering
 import { debounce } from 'throttle-debounce';
 import { getAsset } from './assets';
 import { getCurrentState } from './state';
 
+// This stuff isn't going to be constant, but for now...
 const Constants = require('../shared/constants');
 
-const { PLAYER_RADIUS, PLAYER_MAX_HP, BULLET_RADIUS, MAP_SIZE } = Constants;
+const {
+  PLAYER_RADIUS,
+  PLAYER_MAX_HP,
+  BULLET_RADIUS,
+  MAP_SIZE,
+} = Constants;
 
 // Get the canvas graphics context
 const canvas = document.getElementById('game-canvas');
@@ -72,20 +76,20 @@ function renderPlayer(me, player) {
   context.save();
   context.translate(canvasX, canvasY);
   context.rotate(direction);
-  context.drawImage(
-    getAsset('ship.svg'),
-    -PLAYER_RADIUS,
-    -PLAYER_RADIUS,
-    PLAYER_RADIUS * 2,
-    PLAYER_RADIUS * 2,
-  );
+  const shipW = 76;
+  const shipH = 110;
+  context.drawImage(getAsset('ship.png'), -1 * shipW / 2, -1 * shipH / 2, shipW, shipH);
+
+  // draw a dot red square at the player's x,y
+  context.fillStyle = 'red';
+  context.fillRect(0, 0, 4, 4);
   context.restore();
 
   // Draw health bar
   context.fillStyle = 'white';
   context.fillRect(
     canvasX - PLAYER_RADIUS,
-    canvasY + PLAYER_RADIUS + 8,
+    canvasY + 55,
     PLAYER_RADIUS * 2,
     2,
   );
@@ -104,8 +108,8 @@ function renderBullet(me, bullet) {
     getAsset('bullet.svg'),
     canvas.width / 2 + x - me.x - BULLET_RADIUS,
     canvas.height / 2 + y - me.y - BULLET_RADIUS,
-    BULLET_RADIUS * 2,
-    BULLET_RADIUS * 2,
+    BULLET_RADIUS * 5,
+    BULLET_RADIUS * 5,
   );
 }
 
