@@ -38,6 +38,9 @@ class Player extends ObjectClass {
     this.x = Math.max(0, Math.min(Constants.MAP_SIZE, this.x));
     this.y = Math.max(0, Math.min(Constants.MAP_SIZE, this.y));
 
+    this.box.x = this.x;
+    this.box.y = this.y;
+
     // Decrease player's cooldowns
     this.fireCooldown -= dt;
   }

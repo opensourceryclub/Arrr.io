@@ -14,17 +14,6 @@ function applyCollisions(players, bullets) {
         player.takeBulletDamage();
         break;
       }
-
-      // old shit below
-      // if (
-      //   bullet.parentID !== player.id &&
-      //   isBulletCollidingWithShip(player, bullet)
-      //   // player.distanceTo(bullet) <= Constants.PLAYER_RADIUS + Constants.BULLET_RADIUS
-      // ) {
-      //   destroyedBullets.push(bullet);
-      //   player.takeBulletDamage();
-      //   break;
-      // }
     }
   }
   return destroyedBullets;
