@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 const Shape = require('./shape');
 
 class Ship {
