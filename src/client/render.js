@@ -78,7 +78,7 @@ function renderPlayer(me, player) {
   context.rotate(direction);
   const shipW = 76;
   const shipH = 110;
-  context.drawImage(getAsset('ship.png'), -1 * shipW / 2, -1 * shipH / 2, shipW, shipH);
+  context.drawImage(getAsset('ship.svg'), -1 * shipW / 2, -1 * shipH / 2, shipW, shipH);
 
   // draw a dot red square at the player's x,y
   context.fillStyle = 'red';
