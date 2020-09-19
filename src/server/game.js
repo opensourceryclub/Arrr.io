@@ -2,13 +2,13 @@ const Constants = require('../shared/constants');
 const Player = require('./entities/player');
 const applyCollisions = require('./systems/collisions');
 
-const updateBullets = require('./systems/updateBullets');
+const { updateBulletPositions, updateShipPositions } = require('./systems/movement');
 
 class Game {
   constructor() {
     this.sockets = {};
     this.players = {};
-    this.bullets = { bullets: [] };
+    this.bullets = [];
     this.lastUpdateTime = Date.now();
     this.shouldSendUpdate = false;
 
@@ -24,25 +24,26 @@ class Game {
     this.lastUpdateTime = now;
 
     // Update each bullet's position, remove them if they go out of the map's bounds
-    this.bullets.bullets = updateBullets(dt, this.bullets.bullets);
+    updateBulletPositions(dt, this.bullets);
 
     // Update each player's position, score, and fireCooldown
+    updateShipPositions(dt, this.players);
     Object.keys(this.sockets).forEach(playerID => {
       const player = this.players[playerID];
       const newBullet = player.update(dt);
       if (newBullet) {
-        this.bullets.bullets.push(newBullet);
+        this.bullets.push(newBullet);
       }
     });
 
     // Apply collisions, deal damage to players, increase score for hitting another ship
-    const destroyedBullets = applyCollisions(Object.values(this.players), this.bullets.bullets);
+    const destroyedBullets = applyCollisions(Object.values(this.players), this.bullets);
     destroyedBullets.forEach(b => {
       if (this.players[b.parentID]) {
         this.players[b.parentID].onDealtDamage();
       }
     });
-    this.bullets.bullets = this.bullets.bullets.filter(bullet => !destroyedBullets.includes(bullet));
+    this.bullets = this.bullets.filter(bullet => !destroyedBullets.includes(bullet));
 
     // Check if any players are dead, if they are send them a game over message
     Object.keys(this.sockets).forEach(playerID => {
@@ -72,7 +73,7 @@ class Game {
     const nearbyPlayers = Object.values(this.players).filter(
       p => p !== player && p.distanceTo(player) <= Constants.MAP_SIZE / 2,
     );
-    const nearbyBullets = this.bullets.bullets.filter(
+    const nearbyBullets = this.bullets.filter(
       b => b.distanceTo(player) <= Constants.MAP_SIZE / 2,
     );
 
@@ -107,7 +108,7 @@ class Game {
 
   handleShootCannons(socket, dir) {
     const newBullets = this.players[socket.id].shootCannons(dir);
-    this.bullets.bullets = this.bullets.bullets.concat(newBullets);
+    this.bullets = this.bullets.concat(newBullets);
   }
 
   getLeaderboard() {

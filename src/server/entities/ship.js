@@ -7,9 +7,21 @@ const Shape = require('./shape');
  * @class Ship
  */
 class Ship {
-  constructor(type, cannons, hull, steering, speed, cargo) {
+  constructor(playerId, type, cannons, hull, steering, speed, cargo) {
+    // the player this ship belongs to
+    this.playerId = playerId;
+
     // this ship type, unique per ship
     this.type = type;
+
+    // the ships current position
+    this.x = x;
+    this.y = y;
+    this.direction = dir;
+    this.speed = speed;
+    this.hitbox = hitbox;
+
+    // the ships current heading direction
 
     // the number of cannons on each side
     this.cannons = cannons.sides;
@@ -26,11 +38,13 @@ class Ship {
     this.length = hull.length;
     this.width = hull.width;
 
+    // the ships current steering angle
+    this.steeringAngle = 0;
     // how quickly the ship can steer
     this.steeringSpeed = steering.angle;
-    // current steeringAngle
-    this.steeringAngle = 0;
 
+    // the ships current speed
+    this.speed = 0;
     // how fast the ship can travel
     this.maxSpeed = speed.max;
     // how quickly the ship accelerates
