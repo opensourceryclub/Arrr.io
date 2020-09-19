@@ -18,5 +18,6 @@ module.exports = Object.freeze({
     INPUT: 'input',
     SHOOT: 'shoot',
     GAME_OVER: 'dead',
+    DISCONNECT: 'disconnect',
   },
 });

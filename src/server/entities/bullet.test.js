@@ -1,5 +1,5 @@
 const Bullet = require('./bullet');
-const Constants = require('../shared/constants');
+const Constants = require('../../shared/constants');
 
 const DIRECTION_UP = 0;
 const DIRECTION_DOWN = Math.PI;

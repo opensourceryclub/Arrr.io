@@ -1,6 +1,6 @@
 const shortid = require('shortid');
 const ObjectClass = require('./object');
-const Constants = require('../shared/constants');
+const Constants = require('../../shared/constants');
 const Shape = require('./shape');
 
 class Bullet extends ObjectClass {

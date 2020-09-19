@@ -1,6 +1,11 @@
 /* eslint-disable class-methods-use-this */
 const Shape = require('./shape');
 
+/**
+ * Models all of the 
+ *
+ * @class Ship
+ */
 class Ship {
   constructor(type, cannons, hull, steering, speed, cargo) {
     // this ship type, unique per ship
