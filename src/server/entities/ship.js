@@ -7,21 +7,9 @@ const Shape = require('./shape');
  * @class Ship
  */
 class Ship {
-  constructor(playerId, type, cannons, hull, steering, speed, cargo) {
-    // the player this ship belongs to
-    this.playerId = playerId;
-
+  constructor(type, cannons, hull, steering, speed, cargo) {
     // this ship type, unique per ship
     this.type = type;
-
-    // the ships current position
-    this.x = x;
-    this.y = y;
-    this.direction = dir;
-    this.speed = speed;
-    this.hitbox = hitbox;
-
-    // the ships current heading direction
 
     // the number of cannons on each side
     this.cannons = cannons.sides;

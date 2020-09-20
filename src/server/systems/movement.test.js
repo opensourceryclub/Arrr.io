@@ -1,6 +1,6 @@
 const Bullet = require('../entities/bullet');
-const { shipFactory } = require('../entities/ship');
-const { updateBulletPositions } = require('./movement');
+const Player = require('../entities/player');
+const { updateBulletPositions, updateShipPositions } = require('./movement');
 
 describe('updateBulletPositions', () => {
   it('bullets position should be updated according to the dt, bullet direction, and bullet speed', () => {
@@ -43,18 +43,18 @@ describe('updateShipPositions', () => {
   it('ships position should be updated according to the dt, ship direction, and ship speed', () => {
     // Setup test data
     const dt = 50;
-    const ships = [
-      shipFactory.defaultShip(),
-    ];
+    const ships = {
+      1: new Player(1, 'username', 100, 100),
+    };
     const shipsCopy = JSON.parse(JSON.stringify(ships));
 
     // Update ships positions
-    const updatedShips = updateBulletPositions(dt, shipsCopy);
+    const updatedShips = updateShipPositions(dt, shipsCopy);
 
     // Assert that each ship's position was correctly updated
-    for (let i = 0; i < updatedShips.length; i++) {
-      const originalShip = ships[i];
-      const updatedShip = updatedShips[i];
+    for (let ship in updatedShips) {
+      const originalShip = ships[ship];
+      const updatedShip = updatedShips[ship];
       // calculate expected position
       const expectedX = originalShip.x + (dt * originalShip.speed * Math.sin(originalShip.direction));
       const expectedY = originalShip.y - (dt * originalShip.speed * Math.cos(originalShip.direction));

@@ -28,15 +28,9 @@ class Game {
 
     // Update each player's position, score, and fireCooldown
     updateShipPositions(dt, this.players);
-    Object.keys(this.sockets).forEach(playerID => {
-      const player = this.players[playerID];
-      const newBullet = player.update(dt);
-      if (newBullet) {
-        this.bullets.push(newBullet);
-      }
-    });
 
     // Apply collisions, deal damage to players, increase score for hitting another ship
+    // handleBulletsCollisions(this.bullets, this.players);
     const destroyedBullets = applyCollisions(Object.values(this.players), this.bullets);
     destroyedBullets.forEach(b => {
       if (this.players[b.parentID]) {
