@@ -3,6 +3,7 @@ const Player = require('./entities/player');
 
 const { updateBulletPositions, updateShipPositions } = require('./systems/movement');
 const { handleBulletCollisions } = require('./systems/collisions');
+const { removeDeadPlayers } = require('./systems/removeDeadPlayers');
 
 class Game {
   constructor() {
@@ -33,27 +34,24 @@ class Game {
     handleBulletCollisions(Object.values(this.players), this.bullets);
 
     // Check if any players are dead, if they are send them a game over message
-    Object.keys(this.sockets).forEach(playerID => {
-      const socket = this.sockets[playerID];
-      const player = this.players[playerID];
-      if (player.hp <= 0) {
-        socket.emit(Constants.MSG_TYPES.GAME_OVER);
-        this.removePlayer(socket);
-      }
-    });
+    removeDeadPlayers(this.players, this.sockets);
 
     // Send a game update to each player every other time
     if (this.shouldSendUpdate) {
-      const leaderboard = this.getLeaderboard();
-      Object.keys(this.sockets).forEach(playerID => {
-        const socket = this.sockets[playerID];
-        const player = this.players[playerID];
-        socket.emit(Constants.MSG_TYPES.GAME_UPDATE, this.createUpdate(player, leaderboard));
-      });
+      this.sendUpdates();
       this.shouldSendUpdate = false;
     } else {
       this.shouldSendUpdate = true;
     }
+  }
+
+  sendUpdates() {
+    const leaderboard = this.getLeaderboard();
+    Object.keys(this.sockets).forEach(playerID => {
+      const socket = this.sockets[playerID];
+      const player = this.players[playerID];
+      socket.emit(Constants.MSG_TYPES.GAME_UPDATE, this.createUpdate(player, leaderboard));
+    });
   }
 
   createUpdate(player, leaderboard) {
@@ -75,7 +73,6 @@ class Game {
 
   addPlayer(socket, username) {
     this.sockets[socket.id] = socket;
-
     // Generate a position to start this player at.
     const x = Constants.MAP_SIZE * (0.25 + Math.random() * 0.5);
     const y = Constants.MAP_SIZE * (0.25 + Math.random() * 0.5);
