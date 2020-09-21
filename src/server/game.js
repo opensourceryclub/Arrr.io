@@ -30,14 +30,7 @@ class Game {
     updateShipPositions(dt, this.players);
 
     // Apply collisions, deal damage to players, increase score for hitting another ship
-    handleBulletCollisions(this.players, { bullets: this.bullets });
-    // const destroyedBullets = applyCollisions(Object.values(this.players), this.bullets);
-    // destroyedBullets.forEach(b => {
-    //   if (this.players[b.parentID]) {
-    //     this.players[b.parentID].onDealtDamage();
-    //   }
-    // });
-    // this.bullets = this.bullets.filter(bullet => !destroyedBullets.includes(bullet));
+    handleBulletCollisions(Object.values(this.players), this.bullets);
 
     // Check if any players are dead, if they are send them a game over message
     Object.keys(this.sockets).forEach(playerID => {

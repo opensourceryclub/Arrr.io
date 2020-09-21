@@ -1,3 +1,5 @@
+// This module handles checking for and executing the effects of bullets colliding with players
+
 function handleBulletCollisions(players, bullets) {
   const bulletsToRemove = [];
   for (let i = 0; i < bullets.length; i++) {
