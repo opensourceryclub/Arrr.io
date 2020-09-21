@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
-const ObjectClass = require('./object');
+const Object = require('./object');
 const Bullet = require('./bullet');
 const Constants = require('../../shared/constants');
 const { shipFactory } = require('./ship');
 const Shape = require('./shape');
 
-class Player extends ObjectClass {
+class Player extends Object {
   /**
    * Creates an instance of Player.
    */

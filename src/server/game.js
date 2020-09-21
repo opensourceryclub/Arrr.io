@@ -1,20 +1,19 @@
-const Constants = require('../shared/constants');
-const Player = require('./entities/player');
-
-const { updateBulletPositions, updateShipPositions } = require('./systems/movement');
+const { updateBulletPositions, updatePlayerPositions } = require('./systems/movement');
 const { handleBulletCollisions } = require('./systems/collisions');
 const { removeDeadPlayers } = require('./systems/removeDeadPlayers');
+// const { updateSteering } = require('./systems/steering');
+// const { shootCannons } = require('./systems/shootCannons');
+const Constants = require('../shared/constants');
+const Player = require('./entities/player');
 
 class Game {
   constructor() {
     this.sockets = {};
     this.players = {};
     this.bullets = [];
+    this.ships = {};
     this.lastUpdateTime = Date.now();
     this.shouldSendUpdate = false;
-
-    this.bulletObjs = {};
-
     setInterval(this.update.bind(this), 1000 / 60);
   }
 
@@ -28,13 +27,13 @@ class Game {
     updateBulletPositions(dt, this.bullets);
 
     // Update each player's position, score, and fireCooldown
-    updateShipPositions(dt, this.players);
+    updatePlayerPositions(dt, this.players);
 
     // Apply collisions, deal damage to players, increase score for hitting another ship
     handleBulletCollisions(Object.values(this.players), this.bullets);
 
     // Check if any players are dead, if they are send them a game over message
-    removeDeadPlayers(this.players, this.sockets);
+    removeDeadPlayers(this, this.players, this.sockets);
 
     // Send a game update to each player every other time
     if (this.shouldSendUpdate) {
@@ -84,15 +83,22 @@ class Game {
     delete this.players[socket.id];
   }
 
-  handleSteer(socket, steerControls) {
-    if (this.players[socket.id]) {
-      this.players[socket.id].steer(steerControls);
-    }
-  }
+  handlePlayerAction(socket, action, data) {
+    // make sure the socket has a player
+    if (!this.players[socket.id]) return;
 
-  handleShootCannons(socket, dir) {
-    const newBullets = this.players[socket.id].shootCannons(dir);
-    this.bullets = this.bullets.concat(newBullets);
+    switch (action) {
+      case 'steer':
+        this.players[socket.id].steer(data);
+        // updateSteering(this.players[socket.id], data);
+        break;
+      case 'shoot':
+        this.bullets = this.bullets.concat(this.players[socket.id].shootCannons(data));
+        // shootCannons(this.players[socket.id], this.bullets, data);
+        break;
+      default:
+        console.log(socket, action, data);
+    }
   }
 
   getLeaderboard() {

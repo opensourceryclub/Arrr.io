@@ -16,6 +16,8 @@
     "no-use-before-define": ["error", { "functions": false }],
     "object-curly-newline": "off",
     "operator-linebreak": ["error", "after"],
-    "max-len": [1, 120, 2]
+    "max-len": [1, 120, 2],
+    "class-methods-use-this": "off",
+    "no-param-reassign": "off"
   }
 }

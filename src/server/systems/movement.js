@@ -13,7 +13,7 @@ function updateBulletPositions(dt, bullets) {
   return bullets;
 }
 
-function updateShipPositions(dt, ships) {
+function updatePlayerPositions(dt, ships) {
   for (let key in ships) {
     const ship = ships[key];
     ship.fireCooldown -= dt;
@@ -30,5 +30,5 @@ function updateShipPositions(dt, ships) {
 
 module.exports = {
   updateBulletPositions,
-  updateShipPositions,
+  updatePlayerPositions,
 };

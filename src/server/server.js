@@ -42,11 +42,13 @@ function joinGame(username) {
 }
 
 function handleInput(steerControls) {
-  game.handleSteer(this, steerControls);
+  // game.handleSteer(this, steerControls);
+  game.handlePlayerAction(this, 'steer', steerControls);
 }
 
 function handleShootCannons(dir) {
-  game.handleShootCannons(this, dir);
+  // game.handleShootCannons(this, dir);
+  game.handlePlayerAction(this, 'shoot', dir);
 }
 
 function onDisconnect() {
