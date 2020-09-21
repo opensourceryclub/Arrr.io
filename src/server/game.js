@@ -1,8 +1,8 @@
 const Constants = require('../shared/constants');
 const Player = require('./entities/player');
-const applyCollisions = require('./systems/collisions');
 
 const { updateBulletPositions, updateShipPositions } = require('./systems/movement');
+const { handleBulletCollisions } = require('./systems/collisions');
 
 class Game {
   constructor() {
@@ -30,14 +30,14 @@ class Game {
     updateShipPositions(dt, this.players);
 
     // Apply collisions, deal damage to players, increase score for hitting another ship
-    // handleBulletsCollisions(this.bullets, this.players);
-    const destroyedBullets = applyCollisions(Object.values(this.players), this.bullets);
-    destroyedBullets.forEach(b => {
-      if (this.players[b.parentID]) {
-        this.players[b.parentID].onDealtDamage();
-      }
-    });
-    this.bullets = this.bullets.filter(bullet => !destroyedBullets.includes(bullet));
+    handleBulletCollisions(this.players, { bullets: this.bullets });
+    // const destroyedBullets = applyCollisions(Object.values(this.players), this.bullets);
+    // destroyedBullets.forEach(b => {
+    //   if (this.players[b.parentID]) {
+    //     this.players[b.parentID].onDealtDamage();
+    //   }
+    // });
+    // this.bullets = this.bullets.filter(bullet => !destroyedBullets.includes(bullet));
 
     // Check if any players are dead, if they are send them a game over message
     Object.keys(this.sockets).forEach(playerID => {

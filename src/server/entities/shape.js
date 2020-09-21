@@ -70,7 +70,6 @@ Shape.prototype.project = function (vector) {
   p.forEach(p => {
     x = me.x + p.x;
     y = me.y + p.y;
-    console.log(x, y);
     proj = (x * vector.x + y * vector.y);
     min = proj < min ? proj : min;
     max = proj > max ? proj : max;

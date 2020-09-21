@@ -1,22 +1,24 @@
-// Returns an array of bullets to be destroyed.
-function applyCollisions(players, bullets) {
-  const destroyedBullets = [];
+function handleBulletCollisions(players, bullets) {
+  const bulletsToRemove = [];
   for (let i = 0; i < bullets.length; i++) {
     // Look for a player (who didn't create the bullet) to collide each bullet with.
     // As soon as we find one, break out of the loop to prevent double counting a bullet.
     for (let j = 0; j < players.length; j++) {
       const bullet = bullets[i];
       const player = players[j];
-
-      // use the player and bullet's collision boxes to determine if there was a collision
       if (bullet.parentID !== player.id && player.hitbox.checkCollision(bullet.hitbox)) {
-        destroyedBullets.push(bullet);
+        bulletsToRemove.push(i);
         player.takeBulletDamage();
         break;
       }
     }
   }
-  return destroyedBullets;
+  // Remove all of the bullets that collided with players
+  for (let i = bulletsToRemove.length - 1; i >= 0; i--) {
+    bullets.splice(bulletsToRemove[i], 1);
+  }
 }
 
-module.exports = applyCollisions;
+module.exports = {
+  handleBulletCollisions,
+};
