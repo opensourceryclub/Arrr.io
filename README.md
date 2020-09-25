@@ -1,46 +1,46 @@
-<h1 align="center">
-    Arrr.io
-</h1>
-<p align="center">
-    <img src="https://user-images.githubusercontent.com/24238074/92659677-d76e5500-f2c6-11ea-8969-54025e018597.png" width="200" height="200" alt="Build Status"></img>
+<div align="center">
+  <h1>Arrr.io</h1>
+  <img src="https://user-images.githubusercontent.com/24238074/92659677-d76e5500-f2c6-11ea-8969-54025e018597.png" width="200" height="200" alt="Build Status"></img>
   </a>
-</p>
+</div>
 
-Built on skeleton io game from <a href="https://example-io-game.victorzhou.com">https://example-io-game.victorzhou.com</a> and utilizing the walkthrough: [**How to Build a Multiplayer (.io) Web Game**](https://victorzhou.com/blog/build-an-io-game-part-1/)
+Arrr.io is a face-paced multiplayer pirate game built on the <a href="https://example-io-game.victorzhou.com">example.io</a> skeleton with [Node.js](https://nodejs.org/), [socket.io](https://socket.io/), and [HTML5 Canvas](https://www.w3schools.com/html/html5_canvas.asp).
 
-Built with [Node.js](https://nodejs.org/), [socket.io](https://socket.io/), and [HTML5 Canvas](https://www.w3schools.com/html/html5_canvas.asp).
+## Documentation
 
-Checkout the [live version](http://ec2-3-95-192-146.compute-1.amazonaws.com:3000/).
+Documentation for the server and client are in their respective directories `src/server` and `src/client`.
 
-## Game Description
-arrr.io is an io-style game where users will control pirate ships. The goal is to attain the highest score. They will do this by controlling pirate ships, collecting gold, and battling other pirate ships.
+## Production
 
-In the future, we would like players to be upgrade their ships, and be able to travel to islands to run trade routes for more gold.
+If you just want to start the server, make sure you have Node (>14.2.0) and NPM installed. Then run:
+
+``` bash
+$ npm install
+$ npm run build:prod
+$ npm run start:prod
+```
+
+and you'll have a server running on localhost:3000.
+
 
 ## Development
 
-To get started, make sure you have Node and NPM installed. Then,
+To get started, make sure you have Node (>14.2.0) and NPM installed. Then run:
 
 ```bash
 $ npm install
-$ npm run develop
+$ npm run build:dev
+$ npm run start:dev
 ```
 
-on your local machine.
+to start a server on localhost:3000.
 
-To run the project in a production setting, simply
+## Testing
+
+To run all the jest tests:
 
 ```bash
-$ npm install
-$ npm run build
-$ npm start
+$ npm run test
 ```
 
-## Tests
-
-To run the tests for this this project, simply
-
-```bash
-$ npm install
-$ npm test
-```
+Tests for any module's functionality should be added in the same directory and named `filename.test.js`.
