@@ -18,6 +18,7 @@
     "operator-linebreak": ["error", "after"],
     "max-len": [1, 120, 2],
     "class-methods-use-this": "off",
-    "no-param-reassign": "off"
+    "no-param-reassign": "off",
+    "no-multi-spaces": "off"
   }
 }
