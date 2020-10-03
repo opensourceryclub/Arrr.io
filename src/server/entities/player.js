@@ -23,6 +23,8 @@ class Player extends Object {
     // Give the player the default ship
     this.ship = shipFactory.defaultShip();
 
+    this.rudderAngle = 0;
+
     // The amount of gold the player has
     this.gold = 100;
   }
@@ -40,23 +42,6 @@ class Player extends Object {
 
     // Decrease player's cooldowns
     this.fireCooldown -= dt;
-  }
-
-  /**
-   * Calculate the player's new steer angle. This will depend on which keys the
-   * player pressed, the steering speed of their ship, and whatever else idk.
-   */
-  steer(directions) {
-    // directions : [turn left, turn right]
-    let tempDirection = this.direction + (-directions[0] + directions[1]) * this.ship.steeringSpeed;
-    if (tempDirection > Math.PI) {
-      tempDirection = -1 * Math.PI + (tempDirection - Math.PI);
-    }
-    if (tempDirection < -1 * Math.PI) {
-      tempDirection = Math.PI + (tempDirection + Math.PI);
-    }
-    this.direction = tempDirection;
-    console.log(this.direction);
   }
 
   /**
