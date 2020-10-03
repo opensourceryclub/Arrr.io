@@ -29,60 +29,6 @@ class Player extends Object {
     this.gold = 100;
   }
 
-  update(dt) {
-    // Update position
-    super.update(dt);
-
-    // Update score
-    this.score += dt * Constants.SCORE_PER_SECOND;
-
-    // Make sure the player stays in bounds
-    this.x = Math.max(0, Math.min(Constants.MAP_SIZE, this.x));
-    this.y = Math.max(0, Math.min(Constants.MAP_SIZE, this.y));
-
-    // Decrease player's cooldowns
-    this.fireCooldown -= dt;
-  }
-
-  /**
-   * Attempt to shoot the player's ship's cannon in the direction they're mouse
-   * is pointing.
-   *
-   * @param {*} dir
-   * @returns
-   * @memberof Player
-   */
-  shootCannons(dir) {
-    if (this.fireCooldown <= 0) {
-      // are we firing left or right cannons? rn who cares unit circle hard
-      // if (blahblahblah) {}
-      this.fireCooldown += 1.0;
-
-      const numCannons = this.ship.cannons[0];
-
-      let tempDirection = this.direction + Math.PI / 2;
-      if (tempDirection > Math.PI) {
-        tempDirection = -1 * Math.PI + (tempDirection - Math.PI);
-      }
-      if (tempDirection < -1 * Math.PI) {
-        tempDirection = Math.PI + (tempDirection + Math.PI);
-      }
-      // get x diff
-      const xDiff = Math.cos(tempDirection);
-      // get y diff
-      const yDiff = Math.sin(tempDirection);
-
-      // let offSet = this.ship.length
-
-      const bullets = [];
-      for (let i = 0; i < numCannons; i++) {
-        bullets.push(new Bullet(this.id, this.x + 25 * i * xDiff, this.y + 25 * i * yDiff, dir));
-      }
-      return bullets;
-    }
-    return [];
-  }
-
   takeBulletDamage() {
     this.hp -= Constants.BULLET_DAMAGE;
   }

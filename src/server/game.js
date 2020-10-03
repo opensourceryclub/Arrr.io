@@ -2,7 +2,7 @@ const { updateBulletPositions, updatePlayerPositions } = require('./systems/move
 const { handleBulletCollisions } = require('./systems/collisions');
 const { removeDeadPlayers } = require('./systems/removeDeadPlayers');
 const { updateSteering } = require('./systems/updateSteering');
-// const { shootCannons } = require('./systems/shootCannons');
+const { shootCannons } = require('./systems/shootCannons');
 const Constants = require('../shared/constants');
 const Player = require('./entities/player');
 
@@ -93,8 +93,8 @@ class Game {
         updateSteering(this.players[socket.id], data);
         break;
       case 'shoot':
-        this.bullets = this.bullets.concat(this.players[socket.id].shootCannons(data));
-        // shootCannons(this.players[socket.id], this.bullets, data);
+        // this.bullets = this.bullets.concat(this.players[socket.id].shootCannons(data));
+        shootCannons(this.players[socket.id], this.bullets, data);
         break;
       default:
         console.log(socket, action, data);
