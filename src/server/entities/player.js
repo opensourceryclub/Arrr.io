@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 const Object = require('./object');
-const Bullet = require('./bullet');
 const Constants = require('../../shared/constants');
 const { shipFactory } = require('./ship');
 const Shape = require('./shape');

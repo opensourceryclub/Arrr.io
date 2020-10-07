@@ -6,12 +6,16 @@ const { shootCannons } = require('./systems/shootCannons');
 const Constants = require('../shared/constants');
 const Player = require('./entities/player');
 
+const EntityTypes = {
+  PLAYER: 'player',
+  BULLET: 'bullet',
+};
+
 class Game {
   constructor() {
     this.sockets = {};
     this.players = {};
     this.bullets = [];
-    this.ships = {};
     this.lastUpdateTime = Date.now();
     this.shouldSendUpdate = false;
     setInterval(this.update.bind(this), 1000 / 60);
@@ -83,17 +87,15 @@ class Game {
     delete this.players[socket.id];
   }
 
-  handlePlayerAction(socket, action, data) {
+  handleAction(socket, action, data) {
     // make sure the socket has a player
     if (!this.players[socket.id]) return;
 
     switch (action) {
       case 'steer':
-        // this.players[socket.id].steer(data);
         updateSteering(this.players[socket.id], data);
         break;
       case 'shoot':
-        // this.bullets = this.bullets.concat(this.players[socket.id].shootCannons(data));
         shootCannons(this.players[socket.id], this.bullets, data);
         break;
       default:

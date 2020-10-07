@@ -30,9 +30,9 @@ function onDisconnect() {
 }
 
 function updateSteering(data) {
-  game.handlePlayerAction(this, 'steer', data);
+  game.handleAction(this, 'steer', data);
 }
 
 function shootCannons(data) {
-  game.handlePlayerAction(this, 'shoot', data);
+  game.handleAction(this, 'shoot', data);
 }
