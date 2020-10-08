@@ -6,11 +6,6 @@ const { shootCannons } = require('./systems/shootCannons');
 const Constants = require('../shared/constants');
 const Player = require('./entities/player');
 
-const EntityTypes = {
-  PLAYER: 'player',
-  BULLET: 'bullet',
-};
-
 class Game {
   constructor() {
     this.sockets = {};

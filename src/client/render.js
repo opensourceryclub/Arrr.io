@@ -50,19 +50,19 @@ function render() {
 }
 
 function renderBackground(x, y) {
-  const backgroundX = MAP_SIZE / 2 - x + canvas.width / 2;
-  const backgroundY = MAP_SIZE / 2 - y + canvas.height / 2;
-  const backgroundGradient = context.createRadialGradient(
-    backgroundX,
-    backgroundY,
-    MAP_SIZE / 10,
-    backgroundX,
-    backgroundY,
-    MAP_SIZE / 2,
-  );
-  backgroundGradient.addColorStop(0, 'black');
-  backgroundGradient.addColorStop(1, 'gray');
-  context.fillStyle = backgroundGradient;
+  // const backgroundX = MAP_SIZE / 2 - x + canvas.width / 2;
+  // const backgroundY = MAP_SIZE / 2 - y + canvas.height / 2;
+  // const backgroundGradient = context.createRadialGradient(
+  //   backgroundX,
+  //   backgroundY,
+  //   MAP_SIZE / 10,
+  //   backgroundX,
+  //   backgroundY,
+  //   MAP_SIZE / 2,
+  // );
+  // backgroundGradient.addColorStop(0, 'black');
+  // backgroundGradient.addColorStop(1, 'gray');
+  context.fillStyle = '#3f93fe';
   context.fillRect(0, 0, canvas.width, canvas.height);
 }
 
@@ -76,9 +76,9 @@ function renderPlayer(me, player) {
   context.save();
   context.translate(canvasX, canvasY);
   context.rotate(direction);
-  const shipW = 76;
-  const shipH = 110;
-  context.drawImage(getAsset('ship.svg'), -1 * shipW / 2, -1 * shipH / 2, shipW, shipH);
+  const shipW = 75;
+  const shipH = 150;
+  context.drawImage(getAsset('basic-ship.png'), -1 * shipW / 2, -1 * shipH / 2, shipW, shipH);
 
   // draw a dot red square at the player's x,y
   context.fillStyle = 'red';
