@@ -34,7 +34,7 @@ function render() {
   }
 
   // Draw background
-  renderBackground(me.x, me.y);
+  renderBackground();
 
   // Draw boundaries
   context.strokeStyle = 'black';
@@ -49,19 +49,7 @@ function render() {
   others.forEach(renderPlayer.bind(null, me));
 }
 
-function renderBackground(x, y) {
-  // const backgroundX = MAP_SIZE / 2 - x + canvas.width / 2;
-  // const backgroundY = MAP_SIZE / 2 - y + canvas.height / 2;
-  // const backgroundGradient = context.createRadialGradient(
-  //   backgroundX,
-  //   backgroundY,
-  //   MAP_SIZE / 10,
-  //   backgroundX,
-  //   backgroundY,
-  //   MAP_SIZE / 2,
-  // );
-  // backgroundGradient.addColorStop(0, 'black');
-  // backgroundGradient.addColorStop(1, 'gray');
+function renderBackground() {
   context.fillStyle = '#3f93fe';
   context.fillRect(0, 0, canvas.width, canvas.height);
 }
@@ -117,7 +105,7 @@ function renderMainMenu() {
   const t = Date.now() / 7500;
   const x = MAP_SIZE / 2 + 800 * Math.cos(t);
   const y = MAP_SIZE / 2 + 800 * Math.sin(t);
-  renderBackground(x, y);
+  renderBackground();
 }
 
 let renderInterval = setInterval(renderMainMenu, 1000 / 60);
