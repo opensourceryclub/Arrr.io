@@ -28,7 +28,7 @@ function updatePlayerPositions(dt, players) {
         - the ship's velocity
         - the ship's position
         - the ship's rudder angle
-        - the ship's heading angle - which direction the ship is facing
+        - the ship's direction - where the ship's bow is pointed
 
       Updating the ship's velocity: the ship's velocity will be updated according to
       a formula which considers the current velocity, if the sails are raised, and
@@ -40,7 +40,6 @@ function updatePlayerPositions(dt, players) {
     else                    player.speed = Math.max(player.minSpeed, player.speed - (dt * player.dccel));
 
     // Update the ship's velocity
-    // player.rudderAngle = -1 * Math.PI / 200;
     if (player.rudderAngle !== 0) player.velocDir = rotateBy(player.velocDir, player.rudderAngle);
     player.velocX = player.speed * Math.sin(player.velocDir);
     player.velocY = player.speed * Math.cos(player.velocDir);

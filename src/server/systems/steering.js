@@ -7,6 +7,17 @@ function updateSteering(player, directions) {
   player.rudderAngle = Math.max(player.minRudderAngle, Math.min(player.maxRudderAngle, player.rudderAngle));
 }
 
+/**
+ * Update a player's ship's sails.
+ *
+ * @param {*} player
+ * @param {*} input
+ */
+function updateSails(player, input) {
+  player.sailsRaised = input.raiseSails;
+}
+
 module.exports = {
   updateSteering,
+  updateSails,
 };

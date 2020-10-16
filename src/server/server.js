@@ -13,6 +13,7 @@ io.on('connection', socket => {
   console.log('Player connected!', socket.id);
   socket.on(Constants.MSG_TYPES.DISCONNECT, onDisconnect);
   socket.on(Constants.MSG_TYPES.JOIN_GAME, joinGame);
+  socket.on(Constants.MSG_TYPES.SAILS, updateSails);
   socket.on(Constants.MSG_TYPES.INPUT, updateSteering);
   socket.on(Constants.MSG_TYPES.SHOOT, shootCannons);
 });
@@ -27,6 +28,10 @@ function joinGame(username) {
 
 function onDisconnect() {
   game.removePlayer(this);
+}
+
+function updateSails(data) {
+  game.handleAction(this, 'sails', data);
 }
 
 function updateSteering(data) {

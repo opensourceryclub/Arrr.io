@@ -17,6 +17,7 @@ module.exports = Object.freeze({
     GAME_UPDATE: 'update',
     INPUT: 'input',
     SHOOT: 'shoot',
+    SAILS: 'sails',
     GAME_OVER: 'dead',
     DISCONNECT: 'disconnect',
   },

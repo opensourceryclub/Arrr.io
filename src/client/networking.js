@@ -49,3 +49,7 @@ export const updateDirection = throttle(20, dir => {
 export const shootCannons = throttle(20, data => {
   socket.emit(Constants.MSG_TYPES.SHOOT, data);
 });
+
+export const updateSails = throttle(20, data => {
+  socket.emit(Constants.MSG_TYPES.SAILS, data);
+});
