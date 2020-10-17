@@ -1,7 +1,20 @@
 const socketio = require('socket.io');
 const Game = require('./game');
 const Constants = require('../shared/constants');
-const app = require('./app');
+const express = require('express');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackConfig = require('../../webpack.dev.js');
+
+// Create express app
+const app = express();
+app.use(express.static('public'));
+if (process.env.NODE_ENV === 'development') {
+  const compiler = webpack(webpackConfig);
+  app.use(webpackDevMiddleware(compiler));
+} else {
+  app.use(express.static('dist'));
+}
 
 // Start the server
 const port = process.env.PORT || 3000;

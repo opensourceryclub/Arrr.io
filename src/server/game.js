@@ -2,7 +2,7 @@ const { updateBulletPositions, updatePlayerPositions } = require('./systems/move
 const { handleBulletCollisions } = require('./systems/collisions');
 const { removeDeadPlayers } = require('./systems/removeDeadPlayers');
 const { updateSails, updateSteering } = require('./systems/steering');
-const { shootCannons } = require('./systems/shootCannons');
+const { shootCannons } = require('./systems/shooting');
 const Constants = require('../shared/constants');
 const Player = require('./entities/player');
 
