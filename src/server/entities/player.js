@@ -9,6 +9,7 @@ class Player extends Object {
    * Creates an instance of Player.
    */
   constructor(id, username, x, y) {
+    // TODO: don't do this here
     const hitbox = new Shape([[0, 0], [76, 0], [76, 110], [0, 110]], x, y);
     super(id, x, y, 0, 0, hitbox);
 
@@ -21,6 +22,10 @@ class Player extends Object {
 
     // Give the player the default ship
     this.ship = shipFactory.defaultShip();
+
+    // Ship size parameters, default ship valkues for now
+    this.shipH = 150;
+    this.shipW = 75;
 
     // Ship movement parameters
     this.sailsRaised = true;
@@ -36,6 +41,7 @@ class Player extends Object {
     this.velocY = 0;
     this.accel = 10;
     this.dccel = 10;
+    this.directionVel = 0;
 
     // The amount of gold the player has
     this.gold = 100;
@@ -54,6 +60,9 @@ class Player extends Object {
       ...(super.serializeForUpdate()),
       direction: this.direction,
       hp: this.hp,
+      shipH: this.shipH,
+      shipW: this.shipW,
+      name: this.username,
     };
   }
 }

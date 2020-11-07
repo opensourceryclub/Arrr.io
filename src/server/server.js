@@ -36,11 +36,11 @@ const game = new Game();
 
 // Functions for handling incoming messages from clients
 function joinGame(username) {
-  game.addPlayer(this, username);
+  game.handleAction(this, 'connect', username);
 }
 
 function onDisconnect() {
-  game.removePlayer(this);
+  game.handleAction(this, 'disconnect');
 }
 
 function updateSails(data) {

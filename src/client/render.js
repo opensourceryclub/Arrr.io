@@ -56,7 +56,7 @@ function renderBackground() {
 
 // Renders a ship at the given coordinates
 function renderPlayer(me, player) {
-  const { x, y, direction } = player;
+  const { shipH, shipW, x, y, direction } = player;
   const canvasX = canvas.width / 2 + x - me.x;
   const canvasY = canvas.height / 2 + y - me.y;
 
@@ -64,8 +64,6 @@ function renderPlayer(me, player) {
   context.save();
   context.translate(canvasX, canvasY);
   context.rotate(direction);
-  const shipW = 75;
-  const shipH = 150;
   context.drawImage(getAsset('basic-ship.png'), -1 * shipW / 2, -1 * shipH / 2, shipW, shipH);
 
   // draw a dot red square at the player's x,y
@@ -73,20 +71,30 @@ function renderPlayer(me, player) {
   context.fillRect(0, 0, 4, 4);
   context.restore();
 
-  // Draw health bar
+  // Draw health bar, a solid white rectangle
   context.fillStyle = 'white';
   context.fillRect(
     canvasX - PLAYER_RADIUS,
-    canvasY + 55,
+    canvasY + 10 + (shipH / 2),
     PLAYER_RADIUS * 2,
-    2,
+    10,
   );
+  // Draw the health lost bar, overlaps health bar
   context.fillStyle = 'red';
   context.fillRect(
-    canvasX - PLAYER_RADIUS + PLAYER_RADIUS * 2 * player.hp / PLAYER_MAX_HP,
-    canvasY + PLAYER_RADIUS + 8,
+    canvasX - PLAYER_RADIUS,
+    canvasY + 10 + (shipH / 2),
     PLAYER_RADIUS * 2 * (1 - player.hp / PLAYER_MAX_HP),
-    2,
+    10,
+  );
+  // Draw text for the player's hp, inside health bar
+  context.fillStyle = 'black';
+  context.font = '10px Georgia';
+  context.textAlign = 'center';
+  context.fillText(
+    `${Math.floor(player.hp)}/100`,
+    canvasX,
+    canvasY + 92.5,
   );
 }
 

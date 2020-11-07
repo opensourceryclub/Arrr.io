@@ -2,9 +2,10 @@ const { updateBulletPositions, updatePlayerPositions } = require('./systems/move
 const { handleBulletCollisions } = require('./systems/collisions');
 const { removeDeadPlayers } = require('./systems/removeDeadPlayers');
 const { updateSails, updateSteering } = require('./systems/steering');
+const { addPlayer, removePlayer } = require('./systems/players');
 const { shootCannons } = require('./systems/shooting');
+
 const Constants = require('../shared/constants');
-const Player = require('./entities/player');
 
 class Game {
   constructor() {
@@ -36,20 +37,16 @@ class Game {
 
     // Send a game update to each player every other time
     if (this.shouldSendUpdate) {
-      this.sendUpdates();
+      const leaderboard = this.getLeaderboard();
+      Object.keys(this.sockets).forEach(playerID => {
+        const socket = this.sockets[playerID];
+        const player = this.players[playerID];
+        socket.emit(Constants.MSG_TYPES.GAME_UPDATE, this.createUpdate(player, leaderboard));
+      });
       this.shouldSendUpdate = false;
     } else {
       this.shouldSendUpdate = true;
     }
-  }
-
-  sendUpdates() {
-    const leaderboard = this.getLeaderboard();
-    Object.keys(this.sockets).forEach(playerID => {
-      const socket = this.sockets[playerID];
-      const player = this.players[playerID];
-      socket.emit(Constants.MSG_TYPES.GAME_UPDATE, this.createUpdate(player, leaderboard));
-    });
   }
 
   createUpdate(player, leaderboard) {
@@ -69,33 +66,26 @@ class Game {
     };
   }
 
-  addPlayer(socket, username) {
-    this.sockets[socket.id] = socket;
-    // Generate a position to start this player at.
-    const x = Constants.MAP_SIZE * (0.25 + Math.random() * 0.5);
-    const y = Constants.MAP_SIZE * (0.25 + Math.random() * 0.5);
-    this.players[socket.id] = new Player(socket.id, username, x, y);
-  }
-
-  removePlayer(socket) {
-    delete this.sockets[socket.id];
-    delete this.players[socket.id];
-  }
-
   handleAction(socket, action, data) {
+    switch (action) {
+      case 'connect':
+        addPlayer(this.sockets, this.players, socket, data); return;
+      case 'disconnect':
+        removePlayer(this.sockets, this.players, socket); return;
+      default:
+        break;
+    }
+
     // make sure the socket has a player
     if (!this.players[socket.id]) return;
 
     switch (action) {
       case 'sails':
-        updateSails(this.players[socket.id], data);
-        break;
+        updateSails(this.players[socket.id], data); break;
       case 'steer':
-        updateSteering(this.players[socket.id], data);
-        break;
+        updateSteering(this.players[socket.id], data); break;
       case 'shoot':
-        shootCannons(this.players[socket.id], this.bullets, data);
-        break;
+        shootCannons(this.players[socket.id], this.bullets, data); break;
       default:
         console.log(socket, action, data);
     }
