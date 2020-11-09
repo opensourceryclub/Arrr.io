@@ -1,5 +1,5 @@
 {
-  "name": "io-game-from-scratch",
+  "name": "arr-io",
   "version": "1.0.0",
   "description": "",
   "main": "src/server/server.js",
@@ -11,7 +11,7 @@
     "start": "cross-env NODE_ENV=production node src/server/server.js",
     "start:dev": "cross-env NODE_ENV=development nodemon src/server/server.js"
   },
-  "author": "Victor Zhou",
+  "author": "Zachary Wild",
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",

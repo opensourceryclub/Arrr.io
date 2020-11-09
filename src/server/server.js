@@ -1,10 +1,10 @@
 const socketio = require('socket.io');
-const Game = require('./game');
-const Constants = require('../shared/constants');
 const express = require('express');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackConfig = require('../../webpack.dev.js');
+const Game = require('./game');
+const Constants = require('../shared/constants');
 
 // Create express app
 const app = express();

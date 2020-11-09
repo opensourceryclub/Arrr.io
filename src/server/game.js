@@ -4,9 +4,16 @@ const { removeDeadPlayers } = require('./systems/removeDeadPlayers');
 const { updateSails, updateSteering } = require('./systems/steering');
 const { addPlayer, removePlayer } = require('./systems/players');
 const { shootCannons } = require('./systems/shooting');
+const { purchaseShip } = require('./systems/store');
 
 const Constants = require('../shared/constants');
 
+/**
+ * Runs an instance of the game. Exposes an action handler, which callers can
+ * use to pass player actions.
+ *
+ * @class Game
+ */
 class Game {
   constructor() {
     this.sockets = {};
@@ -86,6 +93,8 @@ class Game {
         updateSteering(this.players[socket.id], data); break;
       case 'shoot':
         shootCannons(this.players[socket.id], this.bullets, data); break;
+      case 'purchase':
+        purchaseShip(this.players[socket.id], data); break;
       default:
         console.log(socket, action, data);
     }
