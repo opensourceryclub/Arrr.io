@@ -18,6 +18,7 @@ module.exports = Object.freeze({
     INPUT: 'input',
     SHOOT: 'shoot',
     SAILS: 'sails',
+    PURCHASE_SHIP: 'purchase',
     GAME_OVER: 'dead',
     DISCONNECT: 'disconnect',
   },

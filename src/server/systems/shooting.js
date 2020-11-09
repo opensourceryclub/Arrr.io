@@ -21,7 +21,7 @@ function shootCannons(player, bullets, dir) {
     const yDiff = Math.sin(tempDirection);
 
     // create 1 bullet for each cannons on the players ship
-    const numCannons = player.ship.cannons[0];
+    const numCannons = 2;
     for (let i = 0; i < numCannons; i++) {
       // evenly space cannonballs relative to the ships broadside
       const x = player.x + ((startingOffsets[numCannons] + (i * spacing)) * xDiff);

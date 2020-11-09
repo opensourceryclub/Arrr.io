@@ -44,7 +44,7 @@ class Player extends Object {
     this.directionVel = 0;
 
     // The amount of gold the player has
-    this.gold = 100;
+    this.gold = 1000;
   }
 
   takeBulletDamage() {

@@ -13,11 +13,11 @@ let keysPressed = {};
 function onKeyDown(event) {
   keysPressed[event.key] = true;
 
-  if (event.key == 'a' || event.key == 'd' ) {
+  if (event.key == 'a' || event.key == 'd') {
     updateDirection([ (keysPressed.a ? 1 : 0) , (keysPressed.d ? 1 : 0) ]);
   }
 
-  if (event.key == 'w' || event.key == 's' ) {
+  if (event.key == 'w' || event.key == 's') {
     updateSails({raiseSails: keysPressed.w});
   }
 
@@ -45,8 +45,8 @@ function handleInput(x, y) {
 }
 
 export function startCapturingInput() {
-  window.addEventListener('keydown', onKeyDown)
-  window.addEventListener('keyup', onKeyUp)
+  window.addEventListener('keydown', onKeyDown);
+  window.addEventListener('keyup', onKeyUp);
 
   // window.addEventListener('mousemove', onMouseInput);
   window.addEventListener('click', onMouseInput);
@@ -55,12 +55,11 @@ export function startCapturingInput() {
 }
 
 export function stopCapturingInput() {
-  window.removeEventListener('keydown', onKeyDown)
-  window.removeEventListener('keyup', onKeyUp)
+  window.removeEventListener('keydown', onKeyDown);
+  window.removeEventListener('keyup', onKeyUp);
 
   // window.removeEventListener('mousemove', onMouseInput);
   window.removeEventListener('click', onMouseInput);
   window.removeEventListener('touchstart', onTouchInput);
   window.removeEventListener('touchmove', onTouchInput);
-
 }

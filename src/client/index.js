@@ -1,9 +1,10 @@
 import { connect, play } from './networking';
 import { startRendering, stopRendering } from './render';
 import { startCapturingInput, stopCapturingInput } from './input';
+import { setStoreHidden } from './store';
+import { setLeaderboardHidden } from './leaderboard';
 import { downloadAssets } from './assets';
 import { initState } from './state';
-import { setLeaderboardHidden } from './leaderboard';
 
 // I'm using a tiny subset of Bootstrap here for convenience - there's some wasted CSS,
 // but not much. In general, you should be careful using Bootstrap because it makes it
@@ -29,6 +30,7 @@ Promise.all([
     startCapturingInput();
     startRendering();
     setLeaderboardHidden(false);
+    setStoreHidden(false);
   };
 }).catch(console.error);
 
@@ -37,4 +39,5 @@ function onGameOver() {
   stopRendering();
   playMenu.classList.remove('hidden');
   setLeaderboardHidden(true);
+  setStoreHidden(true);
 }

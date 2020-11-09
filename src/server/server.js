@@ -29,6 +29,7 @@ io.on('connection', socket => {
   socket.on(Constants.MSG_TYPES.SAILS, updateSails);
   socket.on(Constants.MSG_TYPES.INPUT, updateSteering);
   socket.on(Constants.MSG_TYPES.SHOOT, shootCannons);
+  socket.on(Constants.MSG_TYPES.PURCHASE_SHIP, purchaseShip);
 });
 
 // Start the game, this will intialize the game state and begin the game loop
@@ -53,4 +54,8 @@ function updateSteering(data) {
 
 function shootCannons(data) {
   game.handleAction(this, 'shoot', data);
+}
+
+function purchaseShip(data) {
+  game.handleAction(this, Constants.MSG_TYPES.PURCHASE_SHIP, data);
 }

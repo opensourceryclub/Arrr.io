@@ -53,3 +53,8 @@ export const shootCannons = throttle(20, data => {
 export const updateSails = throttle(20, data => {
   socket.emit(Constants.MSG_TYPES.SAILS, data);
 });
+
+export const purchaseShip = throttle(20, data => {
+  data = { ship: 'caravel' };
+  socket.emit([Constants.MSG_TYPES.PURCHASE_SHIP], data);
+});
