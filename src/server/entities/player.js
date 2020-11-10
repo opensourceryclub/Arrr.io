@@ -60,6 +60,8 @@ class Player extends Object {
       ...(super.serializeForUpdate()),
       direction: this.direction,
       hp: this.hp,
+      gold: this.gold,
+      speed: this.speed,
       shipH: this.shipH,
       shipW: this.shipW,
       name: this.username,

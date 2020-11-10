@@ -73,6 +73,38 @@ button:focus {
   outline: none;
 }
 
+#hud {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  text-align: center;
+}
+
+#hud p {
+  margin-bottom: 0;
+}
+
+#hud input {
+  font-size: 18px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+  padding: 3px;
+  text-align: center;
+}
+
+#hud input:hover {
+  outline: none;
+}
 
 #store {
   position: fixed;

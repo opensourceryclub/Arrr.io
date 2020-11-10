@@ -1,6 +1,7 @@
 import { debounce } from 'throttle-debounce';
 import { getAsset } from './assets';
 import { getCurrentState } from './state';
+import { updateHUD } from './hud';
 
 // This stuff isn't going to be constant, but for now...
 const Constants = require('../shared/constants');
@@ -32,6 +33,8 @@ function render() {
   if (!me) {
     return;
   }
+
+  updateHUD({ gold: me.gold, speed: me.speed, x: me.x, y: me.y });
 
   // Draw background
   renderBackground();
@@ -66,7 +69,7 @@ function renderPlayer(me, player) {
   context.rotate(direction);
   context.drawImage(getAsset('basic-ship.png'), -1 * shipW / 2, -1 * shipH / 2, shipW, shipH);
 
-  // draw a dot red square at the player's x,y
+  // Draw a dot red square at the player's x,y
   context.fillStyle = 'red';
   context.fillRect(0, 0, 4, 4);
   context.restore();
