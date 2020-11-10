@@ -1,6 +1,8 @@
 import { connect, play } from './networking';
 import { startRendering, stopRendering } from './render';
 import { startCapturingInput, stopCapturingInput } from './input';
+import { setHUDHidden } from './hud';
+import { setButtonsHidden } from './buttons';
 import { setStoreHidden } from './store';
 import { setLeaderboardHidden } from './leaderboard';
 import { downloadAssets } from './assets';
@@ -29,8 +31,9 @@ Promise.all([
     initState();
     startCapturingInput();
     startRendering();
+    setHUDHidden(false);
     setLeaderboardHidden(false);
-    setStoreHidden(false);
+    setButtonsHidden(false);
   };
 }).catch(console.error);
 
@@ -38,6 +41,8 @@ function onGameOver() {
   stopCapturingInput();
   stopRendering();
   playMenu.classList.remove('hidden');
+  setHUDHidden(true);
   setLeaderboardHidden(true);
+  setButtonsHidden(true);
   setStoreHidden(true);
 }

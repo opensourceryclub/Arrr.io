@@ -11,7 +11,7 @@
 </head>
 <body>
   <canvas id="game-canvas"></canvas>
-  <div id="play-menu" class="hidden">
+  <div id="play-menu">
     <h1>Arrr.io game</h1>
     <p>
       Stay alive and shoot other players.
@@ -25,6 +25,16 @@
     <hr />
     <input type="text" id="username-input" placeholder="Username" />
     <button id="play-button">PLAY</button>
+  </div>
+  <div id="buttons" class="hidden">
+    <button id="open-store">Store</button>
+    <button id="open-settings">Settings</button>
+  </div>
+  <div id="hud" class="hidden">
+    <p id="ship">Ship</p>
+    <p id="speed">Speed</p>
+    <p id="gold">Gold</p>
+    <p id="position">Position</p>
   </div>
   <div id="store" class="hidden">
     <h1>Store</h1>

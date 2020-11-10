@@ -35,7 +35,7 @@ SHIPS[SHIP_NAMES.CARAVEL] = {
 
 function purchaseShip(player, data) {
   if (player.gold >= 500) {
-    player.gold -= player.gold;
+    player.gold -= SHIP_COSTS[data.ship];
     player.ship = SHIPS[data.ship];
   }
 }

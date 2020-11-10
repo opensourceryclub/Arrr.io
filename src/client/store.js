@@ -1,9 +1,17 @@
-// Handle all interactions with the store menu
-
 import { purchaseShip } from './networking';
 
+// UI Elements
+
+const store = document.getElementById('store');
+
+// Event listeners
+
+document.getElementById('purchase-sloop').addEventListener('click', purchaseShip);
+document.getElementById('purchase-caravel').addEventListener('click', purchaseShip);
+
+// UI Actions
+
 export const setStoreHidden = hidden => {
-  const store = document.getElementById('store');
   if (hidden) {
     store.classList.add('hidden');
   } else {
@@ -11,5 +19,10 @@ export const setStoreHidden = hidden => {
   }
 };
 
-document.getElementById('purchase-sloop').addEventListener('click', purchaseShip);
-document.getElementById('purchase-caravel').addEventListener('click', purchaseShip);
+export const toggleStoreHidden = () => {
+  if (store.classList.contains('hidden')) {
+    store.classList.remove('hidden');
+  } else {
+    store.classList.add('hidden');
+  }
+};
