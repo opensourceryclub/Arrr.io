@@ -75,31 +75,33 @@ button:focus {
 
 #buttons {
   position: fixed;
-  top: 10px;
-  left: 10px;
-  /* background-color: rgba(255, 255, 255, 0.5); */
-  padding: 10px;
-  border-radius: 5px;
-  width: 15%;
-  /* background-color: white; */
+  top: 1vh;
+  left: 1vh;
+  width: 22vh;
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-radius: 5px;
   text-align: center;
   justify-content: space-between;
 }
 
 #buttons button {
-  padding-left: 5px;
-  background-color: white;
-  text-align: center;
+  height: 10vh;
+  width: 10vh;
+}
+
+#open-store {
+  background-color: green;
+}
+
+#open-settings {
+  background-color: gray;
 }
 
 #hud {
   position: fixed;
-  bottom: 10px;
-  left: 10px;
+  bottom: 1vh;
+  left: 1vh;
   padding: 10px;
   border-radius: 5px;
   background-color: white;
@@ -150,8 +152,8 @@ button:focus {
 
 #leaderboard {
   position: fixed;
-  top: 10px;
-  right: 10px;
+  top: 1vh;
+  right: 1vh;
   background-color: rgba(255, 255, 255, 0.5);
   padding: 10px;
   border-radius: 5px;
