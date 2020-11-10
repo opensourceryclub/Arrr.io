@@ -8,29 +8,29 @@ function onMouseInput(e) {
 
 /* Listen for key presses and maintain state of what keys are currently pressed */
 
-let keysPressed = {};
+const keysPressed = {};
 
 function onKeyDown(event) {
   keysPressed[event.key] = true;
 
-  if (event.key == 'a' || event.key == 'd') {
-    updateDirection([ (keysPressed.a ? 1 : 0) , (keysPressed.d ? 1 : 0) ]);
+  if (event.key === 'a' || event.key === 'd') {
+    updateDirection([(keysPressed.a ? 1 : 0), (keysPressed.d ? 1 : 0)]);
   }
 
-  if (event.key == 'w' || event.key == 's') {
-    updateSails({raiseSails: keysPressed.w});
+  if (event.key === 'w' || event.key === 's') {
+    updateSails({ raiseSails: keysPressed.w });
   }
 
-  if (event.key == 'q' || event.key == 'e') {
-    shootCannons(event.key == 'q' ? -1 : 1);
+  if (event.key === 'q' || event.key === 'e') {
+    shootCannons(event.key === 'q' ? -1 : 1);
   }
 }
 
 function onKeyUp(event) {
   delete keysPressed[event.key];
 
-  if (event.key == 'a' || event.key == 'd') {
-    updateDirection([ (keysPressed.a ? 1 : 0) , (keysPressed.d ? 1 : 0) ]);
+  if (event.key === 'a' || event.key === 'd') {
+    updateDirection([(keysPressed.a ? 1 : 0), (keysPressed.d ? 1 : 0)]);
   }
 }
 
@@ -41,7 +41,7 @@ function onTouchInput(e) {
 
 function handleInput(x, y) {
   const dir = Math.atan2(x - window.innerWidth / 2, window.innerHeight / 2 - y);
-  shootCannons(dir)
+  shootCannons(dir);
 }
 
 export function startCapturingInput() {

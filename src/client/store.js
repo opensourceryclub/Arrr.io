@@ -4,11 +4,6 @@ import { purchaseShip } from './networking';
 
 const store = document.getElementById('store');
 
-// Event listeners
-
-document.getElementById('purchase-sloop').addEventListener('click', purchaseShip);
-document.getElementById('purchase-caravel').addEventListener('click', purchaseShip);
-
 // UI Actions
 
 export const setStoreHidden = hidden => {
@@ -26,3 +21,9 @@ export const toggleStoreHidden = () => {
     store.classList.add('hidden');
   }
 };
+
+// Event listeners
+
+document.getElementById('purchase-sloop').addEventListener('click', purchaseShip);
+document.getElementById('purchase-caravel').addEventListener('click', purchaseShip);
+document.getElementById('close-store').addEventListener('click', toggleStoreHidden);

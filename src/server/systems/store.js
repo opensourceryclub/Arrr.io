@@ -11,6 +11,7 @@ SHIP_COSTS[SHIP_NAMES.FRIGATE] = 1000;
 
 const SHIPS = {};
 SHIPS[SHIP_NAMES.SLOOP] = {
+  name: 'Sloop',
   shipH: 150,
   shipW: 75,
   rudderSpeed: 1 / 500,
@@ -22,8 +23,9 @@ SHIPS[SHIP_NAMES.SLOOP] = {
   dccel: 10,
 };
 SHIPS[SHIP_NAMES.CARAVEL] = {
-  shipH: 150,
-  shipW: 75,
+  name: 'Caravel',
+  shipH: 300,
+  shipW: 150,
   rudderSpeed: 1 / 500,
   maxRudderAngle: Math.PI / 200,
   minRudderAngle: Math.PI / 200 * -1,

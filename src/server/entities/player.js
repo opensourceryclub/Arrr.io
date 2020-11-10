@@ -62,9 +62,10 @@ class Player extends Object {
       hp: this.hp,
       gold: this.gold,
       speed: this.speed,
-      shipH: this.shipH,
-      shipW: this.shipW,
+      shipH: this.ship.shipH,
+      shipW: this.ship.shipW,
       name: this.username,
+      ship: this.ship.name,
     };
   }
 }

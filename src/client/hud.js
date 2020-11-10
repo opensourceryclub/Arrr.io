@@ -1,4 +1,3 @@
-
 // UI Elements
 
 const hud = document.getElementById('hud');
@@ -23,3 +22,5 @@ export const setHUDHidden = hidden => {
     hud.classList.remove('hidden');
   }
 };
+
+// Event Listeners

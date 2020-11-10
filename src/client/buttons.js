@@ -4,10 +4,6 @@ import { toggleStoreHidden } from './store';
 
 const buttons = document.getElementById('buttons');
 
-// Event Listeners
-
-document.getElementById('open-store').addEventListener('click', toggleStoreHidden);
-
 // UI Actions
 
 export const setButtonsHidden = hidden => {
@@ -17,3 +13,7 @@ export const setButtonsHidden = hidden => {
     buttons.classList.remove('hidden');
   }
 };
+
+// Event Listeners
+
+document.getElementById('open-store').addEventListener('click', toggleStoreHidden);

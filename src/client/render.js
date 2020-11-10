@@ -34,7 +34,7 @@ function render() {
     return;
   }
 
-  updateHUD({ gold: me.gold, speed: me.speed, x: me.x, y: me.y });
+  updateHUD({ ship: me.ship, gold: me.gold, speed: me.speed, x: me.x, y: me.y });
 
   // Draw background
   renderBackground();

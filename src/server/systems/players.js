@@ -14,7 +14,19 @@ function removePlayer(sockets, players, socket) {
   delete players[socket.id];
 }
 
+function removeDeadPlayers(game, players, sockets) {
+  Object.keys(sockets).forEach(playerID => {
+    const socket = sockets[playerID];
+    const player = players[playerID];
+    if (player.hp <= 0) {
+      socket.emit(Constants.MSG_TYPES.GAME_OVER);
+      removePlayer(sockets, players, socket);
+    }
+  });
+}
+
 module.exports = {
   addPlayer,
   removePlayer,
+  removeDeadPlayers,
 };

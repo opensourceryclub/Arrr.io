@@ -1,8 +1,7 @@
 const { updateBulletPositions, updatePlayerPositions } = require('./systems/movement');
-const { handleBulletCollisions } = require('./systems/collisions');
-const { removeDeadPlayers } = require('./systems/removeDeadPlayers');
+const { addPlayer, removePlayer, removeDeadPlayers } = require('./systems/players');
 const { updateSails, updateSteering } = require('./systems/steering');
-const { addPlayer, removePlayer } = require('./systems/players');
+const { handleBulletCollisions } = require('./systems/collisions');
 const { shootCannons } = require('./systems/shooting');
 const { purchaseShip } = require('./systems/store');
 
@@ -55,6 +54,11 @@ class Game {
       this.shouldSendUpdate = true;
     }
   }
+
+  // removePlayer(socket) {
+  //   delete this.sockets[socket.id];
+  //   delete this.players[socket.id];
+  // }
 
   createUpdate(player, leaderboard) {
     const nearbyPlayers = Object.values(this.players).filter(

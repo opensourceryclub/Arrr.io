@@ -10,6 +10,7 @@ class Ship {
   constructor(type, cannons, hull, steering, speed, cargo) {
     // this ship type, unique per ship
     this.type = type;
+    this.name = 'Sloop';
 
     // the number of cannons on each side
     this.cannons = cannons.sides;
@@ -46,6 +47,9 @@ class Ship {
     this.capacityUsed = cargo.capacityUsed;
     // the current cargo held by the ship
     this.cargo = cargo.store;
+
+    this.shipW = 75;
+    this.shipH = 150;
   }
 }
 
