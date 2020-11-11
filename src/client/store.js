@@ -3,6 +3,7 @@ import { purchaseShip } from './networking';
 // UI Elements
 
 const store = document.getElementById('store');
+const storeItems = document.getElementById('store-items');
 
 // UI Actions
 
@@ -22,8 +23,27 @@ export const toggleStoreHidden = () => {
   }
 };
 
-// Event listeners
+// Add items to the store
 
-document.getElementById('purchase-sloop').addEventListener('click', purchaseShip);
-document.getElementById('purchase-caravel').addEventListener('click', purchaseShip);
+const items = [
+  { name: 'sloop', goldCost: 250 },
+  // { name: 'caravel', goldCost: 500 },
+];
+
+items.forEach(item => {
+  const storeItem = document.createElement('div');
+  storeItem.classList.add('store-item');
+  storeItems.insertAdjacentElement('beforeend', storeItem);
+
+  storeItem.innerHTML = `
+    <img src="/assets/${item.name.toLowerCase()}.png">
+    <h3>${item.name}</h3>
+    <button id="purchase-${item.name}">${item.goldCost}</button>
+  `;
+
+  document.getElementById(`purchase-${item.name}`).addEventListener('click', purchaseShip);
+});
+
+// Add event listeners to store close store button
+
 document.getElementById('close-store').addEventListener('click', toggleStoreHidden);

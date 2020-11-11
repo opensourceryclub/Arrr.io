@@ -12,9 +12,9 @@
 <body>
   <canvas id="game-canvas"></canvas>
   <div id="play-menu">
-    <h1>Arrr.io game</h1>
+    <h1>Shipwreck.io</h1>
     <p>
-      Stay alive and shoot other players.
+      Stay alive by shooting other players.
       <br />
       Use your mouse to move.
     </p>
@@ -30,17 +30,26 @@
     <button id="open-store"></button>
     <button id="open-settings"></button>
   </div>
+  <div id="store" class="hidden">
+    <h1>Store</h1>
+    <div id="store-items">
+      <!-- <div class="store-item">
+        <img src="/assets/basic-ship.png">
+        <h3>Sloop</h3>
+        <button id="purchase-sloop">Purchase</button>
+      </div>
+      <div class="store-item">
+        <h3>Caravel</h3>
+        <button id="purchase-caravel">Purchase</button>
+      </div> -->
+    </div>
+    <button id="close-store">X</button>
+  </div>
   <div id="hud" class="hidden">
     <p id="ship">Ship</p>
     <p id="speed">Speed</p>
     <p id="gold">Gold</p>
     <p id="position">Position</p>
-  </div>
-  <div id="store" class="hidden">
-    <h1>Store</h1>
-    <button id="purchase-sloop">Purchase Sloop</button>
-    <button id="purchase-caravel">Purchase Caravel</button>
-    <button id="close-store">X</button>
   </div>
   <div id="leaderboard" class="hidden">
     <table>

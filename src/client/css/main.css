@@ -98,56 +98,35 @@ button:focus {
   background-color: gray;
 }
 
-#hud {
+#store {
   position: fixed;
-  bottom: 1vh;
+  top: 12vh;
   left: 1vh;
   padding: 10px;
   border-radius: 5px;
   background-color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 15%;
-}
-
-#hud p {
-  margin-bottom: 0;
-}
-
-#store {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  width: 25%;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 10px;
-  border-radius: 5px;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 5px;
-  text-align: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 50vw;
 }
 
 #store p {
   margin-bottom: 0;
 }
 
-#store input {
-  font-size: 18px;
-  outline: none;
-  border: none;
-  border-bottom: 1px solid black;
-  margin-bottom: 5px;
-  padding: 3px;
-  text-align: center;
+
+#store-items {
+  display: flex;
+  flex-direction: column;
 }
 
-#store input:hover {
-  outline: none;
+.store-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 48vw;
 }
 
 #leaderboard {
@@ -167,6 +146,24 @@ button:focus {
 #leaderboard td {
   text-align: center;
   padding: 2px 5px;
+}
+
+#hud {
+  position: fixed;
+  bottom: 1vh;
+  left: 1vh;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 15%;
+}
+
+#hud p {
+  margin-bottom: 0;
 }
 
 #disconnect-modal {
