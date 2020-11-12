@@ -1,0 +1,138 @@
+/**
+  
+  |-----------------------------|
+  |         store-header        |
+  |-----------------------------|
+  |-----------------------------|
+  |-----------------------------|
+  |-----------------------------|
+  |-----------------------------|
+  |-----------------------------|
+  |-----------------------------|
+  |-----------------------------|
+  |-----------------------------|
+  |-----------------------------|
+  |-----------------------------|
+  |-----------------------------|
+  |-----------------------------|
+
+*/
+
+#store {
+  font-family: 'Roboto', sans-serif;
+  position: fixed;
+  top: 10vh;
+  left: 20vw;
+  height: 65vh;
+  width: 59.9vw;
+  /* width: 50vw; */
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#store p {
+  margin-bottom: 0;
+}
+
+#store-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 32pt;
+  font-weight: bold;
+}
+
+#store-items {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.store-item {
+  display: flex;
+  border-radius: 10px;
+  width: 18.1vw;
+  height: 52vh;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  color: #333333;
+  filter: drop-shadow(0px 2px 2px #333333);
+}
+
+.store-item-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.store-item-header-text {
+  font-size: 28pt;
+}
+
+.store-item-image {
+  display: flex;
+  justify-content: center;
+}
+
+.item-image {
+  width: 150;
+  height: 75;
+}
+
+.store-item-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+
+.store-item-stat {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 20pt;
+  font-weight: bold;
+}
+
+.item-stat {
+  display: flex;
+  flex-direction: row;
+}
+
+.item-stat-image {
+  height: 80%;
+  width: 10px;
+  background-color: red;
+}
+
+.item-stat-name {
+
+}
+
+.item-stat-val {
+
+}
+
+.store-item-purchase {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 10px;
+  padding-bottom: 10px;
+}
+
+.store-item-purchase button {
+  width: 90%;
+  background-color: #2DD470;
+}

@@ -1,0 +1,17 @@
+#hud {
+  position: fixed;
+  bottom: 1vh;
+  left: 1vh;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 15%;
+}
+
+#hud p {
+  margin-bottom: 0;
+}

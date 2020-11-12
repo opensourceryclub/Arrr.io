@@ -8,6 +8,9 @@
   <meta property="og:title" content="An example .io game">
   <meta property="og:description" content="A complete example multiplayer .io web game implemented from scratch. Built with Javascript and Node.js. Open source on Github.">
   <meta property="og:image" content="/assets/icon1200.png">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 <body>
   <canvas id="game-canvas"></canvas>
@@ -30,20 +33,13 @@
     <button id="open-store"></button>
     <button id="open-settings"></button>
   </div>
-  <div id="store" class="hidden">
-    <h1>Store</h1>
-    <div id="store-items">
-      <!-- <div class="store-item">
-        <img src="/assets/basic-ship.png">
-        <h3>Sloop</h3>
-        <button id="purchase-sloop">Purchase</button>
-      </div>
-      <div class="store-item">
-        <h3>Caravel</h3>
-        <button id="purchase-caravel">Purchase</button>
-      </div> -->
+  <div id="store">
+    <div id="store-header">
+      <button id="close-store"><</button>
+      <p>Ship Store</p>
+      <button id="close-store">></button>
     </div>
-    <button id="close-store">X</button>
+    <div id="store-items"></div>
   </div>
   <div id="hud" class="hidden">
     <p id="ship">Ship</p>

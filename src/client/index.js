@@ -13,6 +13,12 @@ import { initState } from './state';
 // easy to unnecessarily bloat your site.
 import './css/bootstrap-reboot.css';
 import './css/main.css';
+import './css/hud.css';
+import './css/store.css';
+import './css/navigation.css';
+import './css/leaderboard.css';
+import './css/play-menu.css';
+import './css/disconnect-modal.css';
 
 const playMenu = document.getElementById('play-menu');
 const playButton = document.getElementById('play-button');
@@ -31,8 +37,8 @@ Promise.all([
     initState();
     startCapturingInput();
     startRendering();
-    setHUDHidden(false);
-    setLeaderboardHidden(false);
+    // setHUDHidden(false);
+    // setLeaderboardHidden(false);
     setButtonsHidden(false);
   };
 }).catch(console.error);
@@ -44,5 +50,5 @@ function onGameOver() {
   setHUDHidden(true);
   setLeaderboardHidden(true);
   setButtonsHidden(true);
-  setStoreHidden(true);
+  // setStoreHidden(true);
 }
