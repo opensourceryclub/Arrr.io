@@ -37,7 +37,7 @@ Promise.all([
     initState();
     startCapturingInput();
     startRendering();
-    // setHUDHidden(false);
+    setHUDHidden(false);
     // setLeaderboardHidden(false);
     setButtonsHidden(false);
   };
@@ -50,5 +50,5 @@ function onGameOver() {
   setHUDHidden(true);
   setLeaderboardHidden(true);
   setButtonsHidden(true);
-  // setStoreHidden(true);
+  setStoreHidden(true);
 }

@@ -107,20 +107,15 @@
 .item-stat {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .item-stat-image {
-  height: 80%;
-  width: 10px;
+  height: 30px;
+  width: 30px;
   background-color: red;
-}
-
-.item-stat-name {
-
-}
-
-.item-stat-val {
-
+  margin-right: 10px;
 }
 
 .store-item-purchase {
